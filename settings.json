@@ -1,28 +1,77 @@
 {
-    // Форматирование кода с помощью prettier
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  
-    // Форматирование при сохранении файла
-    "editor.formatOnSave": true,
-  
-    // Использование локальных правил для StyleLint
-    "stylelint.useLocal": true,
-    "stylelint.autoFixOnSave": true,
-  
-    // Проверка орфографии с помощью Code Spell Checker
-    "cSpell.language": "en,ru",
-  
-    // Дополнительный словарь для Code Spell Checker
-    "cSpell.words": ["antd", "reduxjs"],
-  
-    // Подсветка комментариев с приставкой TODO
-    "todohighlight.keywords": [
-      {
-        "text": "TODO:",
-        "color": "white",
-        "border": "1px solid white",
-        "backgroundColor": "rgba(46,24,83,0.5)",
-        "isWholeLine": true
-      }
-    ]
+  // Форматирование кода с помощью prettier
+  // Форматирование при сохранении файла
+  // Использование локальных правил для StyleLint
+  "stylelint.useLocal": true,
+  "stylelint.autoFixOnSave": true,
+  // Проверка орфографии с помощью Code Spell Checker
+  "cSpell.language": "en,ru",
+  // Дополнительный словарь для Code Spell Checker
+  "cSpell.words": ["antd", "reduxjs"],
+  // Подсветка комментариев с приставкой TODO
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "orange"
+    },
+    {
+      "text": "NOTE:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "purple"
+    },
+    {
+      "text": "BUG:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "red"
+    }
+  ],
+  // theme
+  "workbench.colorTheme": "One Dark Pro",
+  "oneDarkPro.italic": false,
+  "oneDarkPro.bold": true,
+  // inlay hints
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  // Превью предложения
+  "editor.suggest.preview": true,
+  //file nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock, .stylelintrc, .stylelintignore, .eslintrc, .eslintignore, .prettierrc",
+    "styles.ts": "variants.ts, keyframes.ts",
+    "index.tsx": "data.ts, utils.ts, data.tsx",
+    "index.ts": "data.ts, utils.ts, data.tsx, interfaces.ts"
+  },
+  // icons
+  "vsicons.associations.folders": [
+    { "icon": "redux", "extensions": ["store"] },
+    { "icon": "route", "extensions": ["routing"] }
+  ],
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true,
+    // For TSLint
+    "source.fixAll.tslint": true,
+    // For Stylelint
+    "source.fixAll.stylelint": true
+  },
+  "editor.codeActionsOnSaveTimeout": 5000,
+  "eslint.format.enable": true,
+  "[javascript, javascriptreact,typescript, typescriptreact]": {
+    "editor.formatOnSave": false
   }
+}
