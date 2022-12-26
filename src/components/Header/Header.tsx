@@ -1,15 +1,21 @@
-import { Space } from 'antd'
+import cn from 'classnames'
+
+import styles from './Header.module.scss'
 
 import HorizontalNavBar from '../HorizontalNavBar/HorizontalNavBar'
+import HorizontalNavBarButtons from '../HorizontalNavBarButtons/HorizontalNavBarButtons'
 
 const Header = () => {
   return (
-    <>
-      <Space style={{ display: 'flex', width: '100%', padding: '8px' }}>
-        <div className=''>Header</div>
+    <header>
+      <div className={cn(styles.header)}>
+        <a href='/' className={styles.logo}>
+          Logo
+        </a>
         <HorizontalNavBar />
-      </Space>
-    </>
+        <HorizontalNavBarButtons />
+      </div>
+    </header>
   )
 }
 

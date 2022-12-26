@@ -1,56 +1,31 @@
-import { Button, Dropdown, Space } from 'antd'
+import cn from 'classnames'
 
-import type { MenuProps } from 'antd'
+import styles from './HorizontalNavBar.module.scss'
+import { menuItems } from './menuItems'
+
+import MenuItems from '../MenuItems/MenuItems'
+
+export type submenuItem = {
+  title: string
+  url: string
+}
+
+export type menuItem = {
+  title: string
+  url: string
+  submenu?: submenuItem[]
+}
 
 const HorizontalNavBar = () => {
-  const items: MenuProps['items'] = [
-    {
-      key: '1',
-      label: (
-        <a target='_blank' rel='noopener noreferrer' href='https://www.antgroup.com'>
-          1st menu item
-        </a>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <a target='_blank' rel='noopener noreferrer' href='https://www.aliyun.com'>
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: '3',
-      label: (
-        <a target='_blank' rel='noopener noreferrer' href='https://www.luohanacademy.com'>
-          3rd menu item
-        </a>
-      ),
-    },
-  ]
   return (
-    <Space align='center'>
-      <Dropdown menu={{ items }} placement='bottomLeft' arrow>
-        <Button>bottomLeft</Button>
-      </Dropdown>
-      <Dropdown menu={{ items }} placement='bottom' arrow>
-        <Button>bottom</Button>
-      </Dropdown>
-      <Dropdown menu={{ items }} placement='bottomRight' arrow>
-        <Button>bottomRight</Button>
-      </Dropdown>
-      <br />
-      <Dropdown menu={{ items }} placement='topLeft' arrow>
-        <Button>topLeft</Button>
-      </Dropdown>
-      <Dropdown menu={{ items }} placement='top' arrow>
-        <Button>top</Button>
-      </Dropdown>
-      <Dropdown menu={{ items }} placement='topRight' arrow>
-        <Button>topRight</Button>
-      </Dropdown>
-    </Space>
+    <nav className={cn(styles.container)}>
+      <ul className={cn(styles.menus)}>
+        {menuItems.map((menu: menuItem, index: number) => {
+          const submenuDepth = 0
+          return <MenuItems item={menu} key={index} submenuDepth={submenuDepth} />
+        })}
+      </ul>
+    </nav>
   )
 }
 
