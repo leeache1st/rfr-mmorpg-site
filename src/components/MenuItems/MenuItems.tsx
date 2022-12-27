@@ -1,6 +1,8 @@
 import cn from 'classnames'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import { Link } from 'react-router-dom'
 
 import styles from './MenuItems.module.scss'
 
@@ -15,8 +17,33 @@ type MenuItemsProps = {
 
 const MenuItems: React.FC<MenuItemsProps> = ({ item, submenuDepth }) => {
   const [dropdown, setDropdown] = useState(false)
+
+  useEffect(() => {
+    const handler = (event: any) => {
+      if (dropdown && ref.current && !ref.current.contains(event.target)) {
+        setDropdown(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    document.addEventListener('touchstart', handler)
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', handler)
+      document.removeEventListener('touchstart', handler)
+    }
+  }, [dropdown])
+
+  const onMouseEnter = () => {
+    window.innerWidth > 960 && setDropdown(true)
+  }
+
+  const onMouseLeave = () => {
+    window.innerWidth > 960 && setDropdown(false)
+  }
+
+  let ref: any = useRef()
   return (
-    <li className={cn(styles.menu)}>
+    <li className={cn(styles.menu)} ref={ref} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {item.submenu ? (
         <>
           <button
@@ -25,12 +52,13 @@ const MenuItems: React.FC<MenuItemsProps> = ({ item, submenuDepth }) => {
             aria-expanded={dropdown ? 'true' : 'false'}
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {item.title} {submenuDepth > 0 ? <span>&raquo;</span> : <span className={cn(styles.arrow)} />}
+            <Link to={item.url}>{item.title}</Link>
+            {submenuDepth > 0 ? <span>&raquo;</span> : <span className={cn(styles.arrow)} />}
           </button>
           <Dropdown submenuDepth={submenuDepth} dropdown={dropdown} submenu={item.submenu} />
         </>
       ) : (
-        <a href={item.url}>{item.title}</a>
+        <Link to={item.url}>{item.title}</Link>
       )}
     </li>
   )

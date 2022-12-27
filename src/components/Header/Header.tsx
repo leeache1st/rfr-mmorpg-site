@@ -1,5 +1,7 @@
 import cn from 'classnames'
 
+import { Link } from 'react-router-dom'
+
 import styles from './Header.module.scss'
 
 import HorizontalNavBar from '../HorizontalNavBar/HorizontalNavBar'
@@ -9,9 +11,9 @@ const Header = () => {
   return (
     <header>
       <div className={cn(styles.header)}>
-        <a href='/' className={styles.logo}>
+        <Link to='/' className='logo'>
           Logo
-        </a>
+        </Link>
         <HorizontalNavBar />
         <HorizontalNavBarButtons />
       </div>

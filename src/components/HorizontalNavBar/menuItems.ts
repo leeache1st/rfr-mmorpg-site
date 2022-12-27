@@ -8,12 +8,12 @@ export const menuItems = [
     url: '/services',
     submenu: [
       {
-        title: 'web design',
-        url: 'web-design',
+        title: 'Profile',
+        url: 'profile',
       },
       {
-        title: 'web development',
-        url: 'web-dev',
+        title: 'Forum',
+        url: 'forum',
         submenu: [
           {
             title: 'Frontend',

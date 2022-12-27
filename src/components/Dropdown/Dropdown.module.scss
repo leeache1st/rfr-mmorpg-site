@@ -19,9 +19,8 @@
 .show {
   display: block;
 }
-
-.dropdown.dropdown_submenu {
+.dropdown_submenu {
   position: absolute;
   left: 100%;
-  top: -7px;
+  top: 0px;
 }
